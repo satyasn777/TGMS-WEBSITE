@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PMSHRI TGMS MUJAHIDPUR | School Portal</title>
+<style>
+:root{--navy:#12345a;--blue:#1f6feb;--bg:#f3f7fc;--ink:#182536;--muted:#65758b;--line:#dfe7f1;--green:#178653;--orange:#c76b13}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+header{background:linear-gradient(120deg,#12345a,#1f6feb);color:white;padding:22px 18px}
+.header-inner{max-width:1150px;margin:auto;display:flex;align-items:center;gap:14px}
+.logo{font-size:36px;background:#ffffff20;border-radius:14px;padding:12px}
+h1{font-size:clamp(20px,4vw,30px);margin:0 0 6px}header p{margin:0;color:#e2edff}
+.wrap{max-width:1150px;margin:18px auto;padding:0 14px}
+.notice{background:#fff8df;border:1px solid #f3dfa0;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5;margin-bottom:16px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px}
+.tab{border:1px solid var(--line);background:white;border-radius:9px;padding:11px 14px;white-space:nowrap;font-weight:700;color:var(--navy);cursor:pointer}
+.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.panel{display:none}.panel.active{display:block}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:8px 0 16px}
+.card,.box{background:white;border:1px solid var(--line);border-radius:13px;padding:16px;box-shadow:0 2px 8px #15385a08}
+.card .label{color:var(--muted);font-size:13px}.card .value{font-size:27px;font-weight:800;margin-top:8px;color:var(--navy)}
+.box h2{margin:0 0 14px;font-size:19px;color:var(--navy)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:12px}
+.field{display:flex;flex-direction:column;gap:5px;flex:1;min-width:130px}
+label{font-size:12px;color:var(--muted);font-weight:700}
+input,select,textarea{font:inherit;border:1px solid #cbd7e5;border-radius:8px;padding:10px;background:white;color:var(--ink);width:100%}
+textarea{min-height:75px;resize:vertical}
+button{font:inherit;border:0;border-radius:8px;padding:10px 13px;cursor:pointer;font-weight:700}
+.primary{background:var(--blue);color:white}.secondary{background:#eaf1fb;color:var(--navy)}.danger{background:#ffebeb;color:#a52626}
+table{width:100%;border-collapse:collapse;min-width:620px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:10px;font-size:13px}th{background:#f4f7fb;color:#41536a}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.empty{text-align:center;padding:24px;color:var(--muted)}
+.small{font-size:12px;color:var(--muted);line-height:1.5}
+footer{text-align:center;color:var(--muted);padding:24px 12px;font-size:12px}
+.pill{display:inline-block;border-radius:20px;padding:4px 8px;background:#e5f7ed;color:#167447;font-size:11px;font-weight:bold}
+@media(max-width:720px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.header-inner{align-items:flex-start}.logo{font-size:27px;padding:9px}.wrap{margin-top:12px}.box{padding:12px}}
+</style>
+</head>
+<body>
+<header><div class="header-inner"><div class="logo">🏫</div><div><h1>PMSHRI TGMS MUJAHIDPUR</h1><p>School Management Portal · Demo version</p></div></div></header>
+<main class="wrap">
+<div class="notice"><strong>Important:</strong> This is a working demo for learning. Data is saved only in this browser on this device. GitHub Pages is public hosting, so do not enter real student personal information. This demo has no login, server, or secure shared database.</div>
+<nav class="tabs" aria-label="Main menu">
+<button class="tab active" data-tab="home">🏠 Dashboard</button><button class="tab" data-tab="students">👩‍🎓 Students</button><button class="tab" data-tab="attendance">✅ Attendance</button><button class="tab" data-tab="timetable">📅 Timetable</button><button class="tab" data-tab="results">📊 Exam Results</button><button class="tab" data-tab="notices">📢 Notices</button>
+</nav>
+<section id="home" class="panel active">
+<div class="cards"><div class="card"><div class="label">Students entered</div><div class="value" id="countStudents">0</div></div><div class="card"><div class="label">Attendance records</div><div class="value" id="countAttendance">0</div></div><div class="card"><div class="label">Exam results</div><div class="value" id="countResults">0</div></div><div class="card"><div class="label">Notices posted</div><div class="value" id="countNotices">0</div></div></div>
+<div class="box"><h2>Welcome to the School Portal</h2><p>Use the tabs above to manage demo student records, take attendance, prepare a class timetable, enter exam marks, and post notices.</p><p class="small">Tip: Start with Students, then use the student name in Attendance and Exam Results. Use “Export CSV” to download a copy of each table.</p><span class="pill">Mobile-friendly layout</span></div>
+</section>
+<section id="students" class="panel"><div class="box"><h2>Student Register</h2><form id="studentForm"><div class="row"><div class="field"><label for="sName">Student name *</label><input id="sName" required maxlength="100" placeholder="Demo student name"></div><div class="field"><label for="sClass">Class / section *</label><select id="sClass" required><option value="">Select class</option><option>IV A</option><option>IV B</option><option>V A</option><option>V B</option><option>VI A</option><option>VI B</option><option>VII A</option><option>VII B</option><option>VIII A</option><option>VIII B</option><option>IX A</option><option>IX B</option><option>X A</option><option>X B</option><option>MPC-I</option><option>BPC-I</option><option>CEC-I</option><option>MPC-II</option><option>BPC-II</option><option>CEC-II</option></select></div><div class="field"><label for="sRoll">Roll number (optional)</label><input id="sRoll" maxlength="30" placeholder="e.g. 01"></div><button class="primary" type="submit">Add student</button></div></form><div class="row"><button class="secondary" onclick="exportTable('students')">Export CSV</button><button class="danger" onclick="clearData('students')">Clear demo records</button></div><div class="table-wrap"><table><thead><tr><th>#</th><th>Name</th><th>Class</th><th>Roll No.</th><th>Action</th></tr></thead><tbody id="studentsBody"></tbody></table></div></div></section>
+<section id="attendance" class="panel"><div class="box"><h2>Daily Attendance</h2><form id="attendanceForm"><div class="row"><div class="field"><label for="aDate">Date</label><input id="aDate" type="date" required></div><div class="field"><label for="aStudent">Student</label><select id="aStudent" required></select></div><div class="field"><label for="aStatus">Status</label><select id="aStatus"><option>Present</option><option>Absent</option><option>Leave</option></select></div><button class="primary">Save attendance</button></div></form><div class="row"><button class="secondary" onclick="exportTable('attendance')">Export CSV</button></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Student</th><th>Class</th><th>Status</th><th>Action</th></tr></thead><tbody id="attendanceBody"></tbody></table></div></div></section>
+<section id="timetable" class="panel"><div class="box"><h2>Class Timetable</h2><form id="timetableForm"><div class="row"><div class="field"><label for="tDay">Day</label><select id="tDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select></div><div class="field"><label for="tClass">Class / section</label><select id="tClass"><option>IV A</option><option>IV B</option><option>V A</option><option>V B</option><option>VI A</option><option>VI B</option><option>VII A</option><option>VII B</option><option>VIII A</option><option>VIII B</option><option>IX A</option><option>IX B</option><option>X A</option><option>X B</option></select></div><div class="field"><label for="tPeriod">Period</label><select id="tPeriod"><option>Period I</option><option>Period II</option><option>Period III</option><option>Period IV</option><option>Period V</option><option>Period VI</option><option>Period VII</option></select></div></div><div class="row"><div class="field"><label for="tTime">Time</label><input id="tTime" placeholder="9:00–9:45"></div><div class="field"><label for="tSubject">Subject</label><input id="tSubject" required placeholder="Telugu / English / Maths"></div><div class="field"><label for="tTeacher">Teacher</label><input id="tTeacher" placeholder="Teacher name"></div><button class="primary">Add period</button></div></form><div class="row"><button class="secondary" onclick="exportTable('timetable')">Export CSV</button></div><div class="table-wrap"><table><thead><tr><th>Day</th><th>Class</th><th>Period</th><th>Time</th><th>Subject</th><th>Teacher</th><th>Action</th></tr></thead><tbody id="timetableBody"></tbody></table></div></div></section>
+<section id="results" class="panel"><div class="box"><h2>Exam Results</h2><form id="resultForm"><div class="row"><div class="field"><label for="rStudent">Student</label><select id="rStudent" required></select></div><div class="field"><label for="rExam">Exam name</label><input id="rExam" required placeholder="Unit Test 1"></div><div class="field"><label for="rSubject">Subject</label><input id="rSubject" required placeholder="Mathematics"></div><div class="field"><label for="rMarks">Marks obtained</label><input id="rMarks" type="number" min="0" required></div><div class="field"><label for="rMax">Maximum marks</label><input id="rMax" type="number" min="1" value="100" required></div><button class="primary">Save result</button></div></form><div class="row"><button class="secondary" onclick="exportTable('results')">Export CSV</button></div><div class="table-wrap"><table><thead><tr><th>Student</th><th>Class</th><th>Exam</th><th>Subject</th><th>Marks</th><th>Percentage</th><th>Action</th></tr></thead><tbody id="resultsBody"></tbody></table></div></div></section>
+<section id="notices" class="panel"><div class="box"><h2>School Notices</h2><form id="noticeForm"><div class="row"><div class="field"><label for="nTitle">Notice title</label><input id="nTitle" required maxlength="120" placeholder="Parent meeting"></div><div class="field"><label for="nDate">Date</label><input id="nDate" type="date" required></div></div><div class="row"><div class="field"><label for="nText">Notice details</label><textarea id="nText" required maxlength="1000" placeholder="Write notice details..."></textarea></div><button class="primary">Publish notice</button></div></form><div class="row"><button class="secondary" onclick="exportTable('notices')">Export CSV</button></div><div id="noticeList"></div></div></section>
+<footer>© PMSHRI TGMS MUJAHIDPUR · Demo school portal</footer>
+<script>
+const keys={students:'pms_demo_students',attendance:'pms_demo_attendance',timetable:'pms_demo_timetable',results:'pms_demo_results',notices:'pms_demo_notices'};
+const get=k=>JSON.parse(localStorage.getItem(keys[k])||'[]');
+const put=(k,v)=>{localStorage.setItem(keys[k],JSON.stringify(v));render();};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=new Date().toISOString().slice(0,10);
+document.querySelector('#aDate').value=today;document.querySelector('#nDate').value=today;
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));}));
+function studentOptions(id){let el=document.getElementById(id),old=el.value;el.innerHTML='<option value="">Select student</option>'+get('students').map(s=>`<option value="${s.id}">${esc(s.name)} — ${esc(s.cls)}</option>`).join('');if([...el.options].some(o=>o.value===old))el.value=old;}
+document.getElementById('studentForm').addEventListener('submit',e=>{e.preventDefault();let a=get('students');a.push({id:Date.now().toString(),name:sName.value.trim(),cls:sClass.value,roll:sRoll.value.trim()});put('students',a);e.target.reset();});
+document.getElementById('attendanceForm').addEventListener('submit',e=>{e.preventDefault();let a=get('attendance');a.push({id:Date.now().toString(),date:aDate.value,studentId:aStudent.value,status:aStatus.value});put('attendance',a);});
+document.getElementById('timetableForm').addEventListener('submit',e=>{e.preventDefault();let a=get('timetable');a.push({id:Date.now().toString(),day:tDay.value,cls:tClass.value,period:tPeriod.value,time:tTime.value.trim(),subject:tSubject.value.trim(),teacher:tTeacher.value.trim()});put('timetable',a);tSubject.value='';tTeacher.value='';});
+document.getElementById('resultForm').addEventListener('submit',e=>{e.preventDefault();let marks=Number(rMarks.value),max=Number(rMax.value);if(marks>max){alert('Marks obtained cannot exceed maximum marks.');return;}let a=get('results');a.push({id:Date.now().toString(),studentId:rStudent.value,exam:rExam.value.trim(),subject:rSubject.value.trim(),marks,max});put('results',a);});
+document.getElementById('noticeForm').addEventListener('submit',e=>{e.preventDefault();let a=get('notices');a.unshift({id:Date.now().toString(),title:nTitle.value.trim(),date:nDate.value,text:nText.value.trim()});put('notices',a);e.target.reset();nDate.value=today;});
+function removeItem(k,id){if(confirm('Delete this record?'))put(k,get(k).filter(x=>x.id!==id));}
+function clearData(k){if(confirm('Delete all '+k+' demo records from this browser?'))put(k,[]);}
+function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"';}
+function exportTable(k){let rows=get(k).map(x=>{if(k==='students')return [x.name,x.cls,x.roll];if(k==='attendance'){let s=get('students').find(y=>y.id===x.studentId)||{};return [x.date,s.name||'Deleted student',s.cls||'',x.status]}if(k==='timetable')return [x.day,x.cls,x.period,x.time,x.subject,x.teacher];if(k==='results'){let s=get('students').find(y=>y.id===x.studentId)||{};return [s.name||'Deleted student',s.cls||'',x.exam,x.subject,x.marks,x.max,(x.marks/x.max*100).toFixed(1)+'%']}return [x.date,x.title,x.text]});let heads={students:['Name','Class','Roll'],attendance:['Date','Student','Class','Status'],timetable:['Day','Class','Period','Time','Subject','Teacher'],results:['Student','Class','Exam','Subject','Marks','Maximum','Percentage'],notices:['Date','Title','Details']};let csv=[heads[k],...rows].map(r=>r.map(csvCell).join(',')).join('\r\n');let blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=k+'.csv';a.click();URL.revokeObjectURL(a.href);}
+function render(){let students=get('students'),att=get('attendance'),tt=get('timetable'),res=get('results'),notes=get('notices');countStudents.textContent=students.length;countAttendance.textContent=att.length;countResults.textContent=res.length;countNotices.textContent=notes.length;studentOptions('aStudent');studentOptions('rStudent');
+studentsBody.innerHTML=students.length?students.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.name)}</td><td>${esc(s.cls)}</td><td>${esc(s.roll)}</td><td><button class="danger" onclick="removeItem('students','${s.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="5" class="empty">No student records yet.</td></tr>';
+attendanceBody.innerHTML=att.length?att.slice().reverse().map(a=>{let s=students.find(x=>x.id===a.studentId)||{};return `<tr><td>${esc(a.date)}</td><td>${esc(s.name||'Deleted student')}</td><td>${esc(s.cls||'')}</td><td>${esc(a.status)}</td><td><button class="danger" onclick="removeItem('attendance','${a.id}')">Delete</button></td></tr>`}).join(''):'<tr><td colspan="5" class="empty">No attendance records yet.</td></tr>';
+timetableBody.innerHTML=tt.length?tt.map(t=>`<tr><td>${esc(t.day)}</td><td>${esc(t.cls)}</td><td>${esc(t.period)}</td><td>${esc(t.time)}</td><td>${esc(t.subject)}</td><td>${esc(t.teacher)}</td><td><button class="danger" onclick="removeItem('timetable','${t.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">No timetable entries yet.</td></tr>';
+resultsBody.innerHTML=res.length?res.slice().reverse().map(r=>{let s=students.find(x=>x.id===r.studentId)||{};return `<tr><td>${esc(s.name||'Deleted student')}</td><td>${esc(s.cls||'')}</td><td>${esc(r.exam)}</td><td>${esc(r.subject)}</td><td>${r.marks}/${r.max}</td><td>${(r.marks/r.max*100).toFixed(1)}%</td><td><button class="danger" onclick="removeItem('results','${r.id}')">Delete</button></td></tr>`}).join(''):'<tr><td colspan="7" class="empty">No exam results yet.</td></tr>';
+noticeList.innerHTML=notes.length?notes.map(n=>`<article class="box" style="margin:10px 0"><div class="small">${esc(n.date)}</div><h3 style="margin:7px 0;color:var(--navy)">${esc(n.title)}</h3><p style="white-space:pre-wrap">${esc(n.text)}</p><button class="danger" onclick="removeItem('notices','${n.id}')">Delete notice</button></article>`).join(''):'<div class="empty">No notices published yet.</div>';
+}
+render();
+</script>
+</body>
+</html>
